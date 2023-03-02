@@ -3,6 +3,7 @@
      "motto": "Organize your finances. It's simple!"
   },
   "navbar": {
-    "home": "Home"
+    "home": "Home",
+    "login": "Login"
   }
 }

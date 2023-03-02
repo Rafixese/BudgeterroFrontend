@@ -3,6 +3,7 @@
     "motto": "Uporządkuj swoje finanse. To proste!"
   },
   "navbar": {
-    "home": "Strona główna"
+    "home": "Strona główna",
+    "login": "Zaloguj"
   }
 }

@@ -3,7 +3,7 @@ import './landingPage.css'
 
 const LandingPage = () => {
     return (
-        <div></div>
+        <div>TESTTEST</div>
     );
 };
 

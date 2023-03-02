@@ -1,24 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import './navbar.css'
 import {
-    useTranslation,
-    setLanguage
+    useTranslation
 } from 'react-multi-lang';
-import {useCookies} from "react-cookie";
 import $ from 'jquery'
+import {NavLink, Link} from 'react-router-dom'
 
-const Navbar = () => {
-    const [cookies, setCookie] = useCookies(['lang'])
-    const [choosenLang, setChoosenLang] = useState(cookies['lang'])
-    const t = useTranslation()
-    // onClick={() => setChoosenLang('gb')}
-    // onClick={() => setChoosenLang('pl')}
+const Navbar = (props) => {
+    const t = useTranslation(props.language)
 
     useEffect(() => {
-        setCookie('lang', choosenLang)
-        // setLanguage(choosenLang)
         $('.dropdown-menu.lang-item')[0].classList.toggle('show')
-    }, [choosenLang])
+    }, [props.language])
 
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
@@ -32,7 +25,18 @@ const Navbar = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <span className="nav-link active" aria-current="page">{t('navbar.home')}</span>
+                            <span className="nav-link active" aria-current="page">
+                                <NavLink className='nav-link-react' exact to="/">
+                                    {t('navbar.home')}
+                                </NavLink>
+                            </span>
+                        </li>
+                        <li className="nav-item">
+                            <span className="nav-link active" aria-current="page">
+                                <NavLink className='nav-link-react' exact to="/home">
+                                    EEE
+                                </NavLink>
+                            </span>
                         </li>
                         {/*<li className="nav-item">*/}
                         {/*    <span className="nav-link">Link</span>*/}
@@ -43,17 +47,20 @@ const Navbar = () => {
                         {/*</li>*/}
                     </ul>
                     <div className="nav-item dropdown me-3">
-                            <span className={`nav-link dropdown-toggle fi fi-${choosenLang}`} role="button" data-bs-toggle="dropdown"
+                            <span className={`nav-link dropdown-toggle fi fi-${props.language}`} role="button"
+                                  data-bs-toggle="dropdown"
                                   aria-expanded="false">
                             </span>
                         <ul className="dropdown-menu lang-item">
-                            <li className="lang-item"><span className="fi fi-gb dropdown-item" onClick={() => setChoosenLang('gb')}></span>
+                            <li className="lang-item"><span className="fi fi-gb dropdown-item"
+                                                            onClick={() => props.set_app_language('gb')}></span>
                             </li>
-                            <li className="lang-item"><span className="fi fi-pl dropdown-item" onClick={() => setChoosenLang('pl')}></span>
+                            <li className="lang-item"><span className="fi fi-pl dropdown-item"
+                                                            onClick={() => props.set_app_language('pl')}></span>
                             </li>
                         </ul>
                     </div>
-                    <button className="btn btn-primary">Login</button>
+                    <button className="btn btn-primary">{t('navbar.login')}</button>
                 </div>
             </div>
         </nav>

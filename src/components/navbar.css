@@ -23,3 +23,22 @@ li.lang-item {
 .dropdown-toggle:empty::after {
     margin-left: 1.2rem;
 }
+
+.dropdown-menu[data-bs-popper] {
+    margin-left: -0.7rem;
+}
+
+.nav-link-react {
+    text-decoration: unset;
+    padding: 0.5rem;
+}
+
+.nav-link-react.active {
+    color: white;
+    background-color: #0d6efd;
+    border-radius: 0.5rem;
+}
+
+.nav-link-react.active:hover {
+    background-color: #0b5ed7;
+}
