@@ -1,0 +1,25 @@
+.dropdown-menu .lang-item {
+    /*justify-content: center;*/
+    /*display: flex;*/
+}
+
+.dropdown-menu.lang-item{
+    min-width: 0;
+    padding: 0.2rem;
+}
+li.lang-item:first-child {
+    /*padding-top: 0rem;*/
+}
+li.lang-item {
+    /*padding-top: 1rem;*/
+    cursor: pointer;
+    padding: 0.2rem;
+}
+
+.fi {
+    border: 1px solid black;
+}
+
+.dropdown-toggle:empty::after {
+    margin-left: 1.2rem;
+}
