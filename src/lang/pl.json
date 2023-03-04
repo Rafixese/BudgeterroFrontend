@@ -4,6 +4,11 @@
   },
   "navbar": {
     "home": "Strona główna",
-    "login": "Zaloguj"
+    "dashboard": "Panel użytkownika",
+    "account": "Konto",
+    "logout": "Wyloguj",
+    "login": "Zaloguj",
+    "toggle_color_mode_dark": "Tryb ciemny",
+    "toggle_color_mode_light": "Tryb jasny"
   }
 }
