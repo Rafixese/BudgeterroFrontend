@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Container, Grid, Typography } from "@mui/material";
+import {Box, Container, Grid, Link, Typography} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 
 
@@ -27,6 +27,13 @@ export const Footer = (props: Props) => {
                     <Grid item xs={12}>
                         <Typography color={theme.palette.primary.contrastText} variant="subtitle1">
                             &#169;{`${new Date().getFullYear()}`} by CatDev Rafał Hrabia
+                        </Typography>
+                    </Grid>
+                    <Grid sx={{opacity:0.3}}>
+                        <Typography color={theme.palette.primary.contrastText} variant="subtitle1">
+                            Credits:
+                            <Link color="inherit" href="https://www.flaticon.com/free-stickers/tasks" title="tasks stickers">Tasks stickers created by Stickers - Flaticon</Link>;
+                            <Link color="inherit" href="https://www.flaticon.com/free-stickers/money" title="money stickers">Money stickers created by Stickers - Flaticon</Link>
                         </Typography>
                     </Grid>
                 </Grid>
