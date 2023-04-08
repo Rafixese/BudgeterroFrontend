@@ -14,10 +14,14 @@
   },
   "login": {
     "signin": "Sign in",
-    "emailaddr": "Email Address",
+    "username": "Username",
     "password": "Password",
     "rememberme": "Remember me",
     "forgot": "Forgot password?",
-    "no_account": "Don't have an account? Sign Up"
+    "no_account": "Don't have an account? Sign Up",
+
+    "signup": "Sign up",
+    "emailaddr": "Email Address",
+    "have_acc": "Already have an account? Sign in"
   }
 }

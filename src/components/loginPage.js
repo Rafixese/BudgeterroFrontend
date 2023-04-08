@@ -1,6 +1,5 @@
 import React from 'react';
 import {useTranslation} from "react-multi-lang";
-import {useTheme} from "@mui/material/styles";
 import {
     Box,
     Checkbox,
@@ -18,13 +17,13 @@ import Button from "@mui/material/Button";
 
 const LoginPage = () => {
     const t = useTranslation()
-    const theme = useTheme()
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        if(!event.currentTarget.reportValidity()) return
         const data = new FormData(event.currentTarget);
         console.log({
-            email: data.get('email'),
+            username: data.get('username'),
             password: data.get('password'),
         });
     };
@@ -46,15 +45,15 @@ const LoginPage = () => {
                 <Typography component="h1" variant="h5">
                     {t('login.signin')}
                 </Typography>
-                <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                <Box id={"form-signin"} component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                     <TextField
                         margin="normal"
                         required
                         fullWidth
-                        id="email"
-                        label={t('login.emailaddr')}
-                        name="email"
-                        autoComplete="email"
+                        id="username"
+                        label={t('login.username')}
+                        name="username"
+                        autoComplete="username"
                         autoFocus
                     />
                     <TextField
@@ -86,7 +85,7 @@ const LoginPage = () => {
                             </Link>
                         </Grid>
                         <Grid item>
-                            <Link href="#" variant="body2">
+                            <Link href="signup" variant="body2">
                                 {t('login.no_account')}
                             </Link>
                         </Grid>

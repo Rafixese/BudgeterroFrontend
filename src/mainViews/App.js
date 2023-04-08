@@ -20,6 +20,7 @@ import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {theme_light, theme_dark} from "../consts/theme"
 import LoginPage from "../components/loginPage";
 import {Box} from "@mui/material";
+import SignupPage from "../components/signupPage";
 
 
 setTranslations({gb, pl});
@@ -66,8 +67,9 @@ function App() {
                         <Navbar set_app_language={set_app_language} language={cookie_lang}
                                 set_color_mode={set_color_mode}/>
                         <Routes>
-                            <Route path="/" element={<LandingPage/>}/>
-                            <Route path="/login" element={<LoginPage/>}/>
+                            <Route exact path="/" element={<LandingPage/>}/>
+                            <Route exact path="/login" element={<LoginPage/>}/>
+                            <Route exact path="/signup" element={<SignupPage/>}/>
                         </Routes>
                     </Box>
                     <Footer></Footer>
