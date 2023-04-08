@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useTranslation} from "react-multi-lang";
 import {
     Box,
@@ -14,22 +14,70 @@ import {
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
+import AlertDock from "./alertDock";
+import {login_api} from "../utils/api";
+import {useCookies} from "react-cookie";
+import {useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
     const t = useTranslation()
+    const [alerts, setAlerts] = useState([])
+    const [cookies, setCookie, removeCookie] = useCookies(['token'])
+    const [checkedRememberMe, setCheckedRememberMe] = React.useState(false);
+    const navigate = useNavigate()
+
+    const pushAlert = (severity, text) => {
+        setAlerts(current => [...current, {
+            severity: severity,
+            text: text
+        }])
+    }
+
+    const clearAlerts = () => {setAlerts([])}
+
+    const handleLogin = async (response) => {
+        console.log(response)
+        const body = await response.json()
+        console.log(body)
+        if (response.ok === false) {
+            if(body.non_field_errors != null) {
+                pushAlert('warning', t('errors.login_failed', {error:body.non_field_errors}))
+            }
+            else{
+                pushAlert('error', t('errors.unexpected', {error:body}))
+            }
+        }
+        else {
+            let exp = {}
+            if(checkedRememberMe) {
+                let exp_date = new Date()
+                exp = { expires: exp_date }
+                exp_date.setFullYear(new Date().getFullYear() + 1)
+            }
+            removeCookie('token')
+            setCookie('token', body.token, exp)
+            navigate('/dashboard')
+        }
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if(!event.currentTarget.reportValidity()) return
+        clearAlerts()
+        if(!event.currentTarget.reportValidity()) {
+            pushAlert('error', t('errors.form_invalid'));
+            return
+        }
         const data = new FormData(event.currentTarget);
         console.log({
             username: data.get('username'),
             password: data.get('password'),
         });
+        login_api(data).then(response => handleLogin(response).catch(()=>{}))
     };
 
     return (
         <Container component="main" maxWidth="xs">
+            <AlertDock variant={"outlined"} alerts={alerts}></AlertDock>
             <CssBaseline />
             <Box
                 sx={{
@@ -67,7 +115,7 @@ const LoginPage = () => {
                         autoComplete="current-password"
                     />
                     <FormControlLabel
-                        control={<Checkbox value="remember" color="primary" />}
+                        control={<Checkbox value="remember" color="primary" defaultChecked={checkedRememberMe} onChange={() => setCheckedRememberMe(current => !current)} />}
                         label={t('login.rememberme')}
                     />
                     <Button

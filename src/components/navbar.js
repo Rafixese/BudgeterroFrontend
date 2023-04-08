@@ -20,7 +20,7 @@ import { useTheme } from '@mui/material/styles';
 const Navbar = (props) => {
     const navigate = useNavigate()
     const t = useTranslation(props.language)
-    const [cookies] = useCookies(['token'])
+    const [cookies, setCookie, removeCookie] = useCookies(['token'])
     const theme = useTheme();
 
     const pages = [
@@ -60,6 +60,7 @@ const Navbar = (props) => {
             login_required: true,
             display_when_auth: true,
             onclick: () => {
+                removeCookie('token')
                 navigate('/')
             }
         },
