@@ -18,6 +18,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import {theme_light, theme_dark} from "../consts/theme"
+import LoginPage from "../components/loginPage";
+import {Box} from "@mui/material";
 
 
 setTranslations({gb, pl});
@@ -33,7 +35,7 @@ function App() {
     }
     if (cookies['mode'] == null) set_color_mode('light');
 
-    const theme = createTheme(cookies['mode'] === 'light'? theme_light: theme_dark);
+    const theme = createTheme(cookies['mode'] === 'light' ? theme_light : theme_dark);
     const set_app_language = (lang) => {
         let exp_date = new Date()
         exp_date.setFullYear(new Date().getFullYear() + 1)
@@ -55,17 +57,23 @@ function App() {
     }
 
     return (
-        <div className="App">
+        <Box className="App">
             <ThemeProvider theme={theme}>
                 <BrowserRouter>
-                    <Navbar set_app_language={set_app_language} language={cookie_lang} set_color_mode={set_color_mode}/>
-                    <Routes>
-                        <Route path="/" element={<LandingPage/>}/>
-                    </Routes>
+                    <Box sx={{
+                        minHeight: '100vh'
+                    }}>
+                        <Navbar set_app_language={set_app_language} language={cookie_lang}
+                                set_color_mode={set_color_mode}/>
+                        <Routes>
+                            <Route path="/" element={<LandingPage/>}/>
+                            <Route path="/login" element={<LoginPage/>}/>
+                        </Routes>
+                    </Box>
                     <Footer></Footer>
                 </BrowserRouter>
             </ThemeProvider>
-        </div>
+        </Box>
     );
 }
 

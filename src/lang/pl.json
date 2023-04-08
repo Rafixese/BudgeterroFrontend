@@ -11,5 +11,13 @@
     "login": "Zaloguj",
     "toggle_color_mode_dark": "Tryb ciemny",
     "toggle_color_mode_light": "Tryb jasny"
+  },
+  "login": {
+    "signin": "Zaloguj się",
+    "emailaddr": "Adres email",
+    "password": "Hasło",
+    "rememberme": "Zapamiętaj mnie",
+    "forgot": "Zapomniałeś hasła?",
+    "no_account": "Nie masz konta? Zarejestruj się."
   }
 }

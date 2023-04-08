@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import './navbar.css'
 import {useTranslation} from 'react-multi-lang';
 import {useNavigate} from 'react-router-dom'
 import {useCookies} from 'react-cookie'
@@ -103,7 +102,7 @@ const Navbar = (props) => {
     };
 
     return (
-        <AppBar position="static">
+        <AppBar id={'navbar'} position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <Typography
@@ -118,7 +117,7 @@ const Navbar = (props) => {
                             textDecoration: 'none',
                         }}
                     >
-                        HomeBudgetPlanner
+                        Budgeterro
                     </Typography>
 
                     <Box sx={{flexGrow: 1, display: {xs: 'flex', md: 'none'}}}>

@@ -1,7 +1,7 @@
 {
   "landing-page": {
     "motto": "Organize your finances. It's easy!\nHow it works?\nTrack your progress\nJoin us!",
-    "desc": "\"HomeBudgetPlanner\" is an application that will help you plan your home budget in an easy and effective way. With it, you will be able to track your monthly income and expenses, control your spending, and achieve your savings goals.\n\nThe app allows you to add expense categories such as food, housing, transportation, entertainment, and many more, which will allow you to track exactly where your money is going. \"HomeBudgetPlanner\" also allows you to set a daily or weekly spending limit, making it easier to control your budget.\n\nWith the reporting tools in \"HomeBudgetPlanner\", you can track your progress in achieving your savings goals and compare your budget month over month. You can also export your data to a spreadsheet or PDF file to easily share it with your family or financial advisor.\n\n\"HomeBudgetPlanner\" is the perfect tool for anyone who wants to have full control over their home budget. Sign up now and start saving money for your goals!"
+    "desc": "Budgeterro is an application that will help you plan your home budget in an easy and effective way. With it, you will be able to track your monthly income and expenses, control your spending, and achieve your savings goals.\n\nThe app allows you to add expense categories such as food, housing, transportation, entertainment, and many more, which will allow you to track exactly where your money is going. Budgeterro also allows you to set a daily or weekly spending limit, making it easier to control your budget.\n\nWith the reporting tools in Budgeterro, you can track your progress in achieving your savings goals and compare your budget month over month. You can also export your data to a spreadsheet or PDF file to easily share it with your family or financial advisor.\n\nBudgeterro is the perfect tool for anyone who wants to have full control over their home budget. Sign up now and start saving money for your goals!"
   },
   "navbar": {
     "home": "Home",
@@ -11,5 +11,13 @@
     "login": "Login",
     "toggle_color_mode_dark": "Dark mode",
     "toggle_color_mode_light": "Light mode"
+  },
+  "login": {
+    "signin": "Sign in",
+    "emailaddr": "Email Address",
+    "password": "Password",
+    "rememberme": "Remember me",
+    "forgot": "Forgot password?",
+    "no_account": "Don't have an account? Sign Up"
   }
 }

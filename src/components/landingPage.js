@@ -1,5 +1,4 @@
 import React from 'react';
-import './landingPage.css'
 import {useTranslation} from 'react-multi-lang';
 import {useTheme} from "@mui/material/styles";
 import {Box, Container, Grid, Typography, Fade} from "@mui/material";
@@ -36,9 +35,9 @@ const LandingPage = () => {
                 <Container>
 
                     {content.map((val, index) => {
-                        return <Grid container spacing={0} mt={index > 0 ? 10 : 0}>
+                        return <Grid container spacing={0} mt={index > 0 ? 10 : 0} key={index}>
                             <Fade in={true} timeout={transition_timeout}>
-                                <Grid md={6}>
+                                <Grid item md={6}>
                                     <Typography variant="h2">{val.motto}</Typography>
                                     <Typography variant="subtitle1" sx={{
                                         textAlign: 'justify',
@@ -47,7 +46,7 @@ const LandingPage = () => {
                                     }}>{val.desc}</Typography>
                                 </Grid>
                             </Fade>
-                            <Grid md={6} xs={12} sx={{
+                            <Grid item md={6} xs={12} sx={{
                                 alignItems: "center",
                                 justifyContent: "center",
                                 verticalAlign: 'middle',
@@ -59,10 +58,10 @@ const LandingPage = () => {
                                     height: '100%',
                                     width: '100%'
                                 }}>
-                                    <Image duration={1000} shift={"left"} sx={{
+                                    <Image src={val.img} duration={1000} shift={"left"} sx={{
                                         maxWidth: '350px',
                                         height: 'auto'
-                                    }} src={val.img}/>
+                                    }}/>
                                 </Box>
                             </Grid>
                         </Grid>
