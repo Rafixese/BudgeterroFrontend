@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import {useTranslation} from "react-multi-lang";
 import {
     Box,
@@ -18,27 +18,23 @@ import AlertDock from "./alertDock";
 import {login_api} from "../utils/api";
 import {useCookies} from "react-cookie";
 import {useNavigate} from "react-router-dom";
+import {AlertsContext} from '../mainViews/App'
 
 const LoginPage = () => {
     const t = useTranslation()
-    const [alerts, setAlerts] = useState([])
+    const alertsContext = useContext(AlertsContext)
+    const pushAlert = alertsContext.pushAlert
+    const clearAlerts = alertsContext.clearAlerts
+    const alerts = alertsContext.alerts;
+
     const [cookies, setCookie, removeCookie] = useCookies(['token'])
     const [checkedRememberMe, setCheckedRememberMe] = React.useState(false);
     const navigate = useNavigate()
 
-    const pushAlert = (severity, text) => {
-        setAlerts(current => [...current, {
-            severity: severity,
-            text: text
-        }])
-    }
-
-    const clearAlerts = () => {setAlerts([])}
-
     const handleLogin = async (response) => {
-        console.log(response)
+        // console.log(response)
         const body = await response.json()
-        console.log(body)
+        // console.log(body)
         if (response.ok === false) {
             if(body.non_field_errors != null) {
                 pushAlert('warning', t('errors.login_failed', {error:body.non_field_errors}))
@@ -68,11 +64,11 @@ const LoginPage = () => {
             return
         }
         const data = new FormData(event.currentTarget);
-        console.log({
-            username: data.get('username'),
-            password: data.get('password'),
-        });
-        login_api(data).then(response => handleLogin(response).catch(()=>{}))
+        // console.log({
+        //     username: data.get('username'),
+        //     password: data.get('password'),
+        // });
+        login_api(data).then(response => handleLogin(response))
     };
 
     return (

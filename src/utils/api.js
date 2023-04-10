@@ -10,4 +10,14 @@ const login_api = (formdata) => {
     return fetch(BASE_URL+"/auth/token/", requestOptions)
 }
 
-export {login_api}
+const signup_api = (formdata) => {
+    const requestOptions = {
+        method: 'POST',
+        body: formdata,
+        redirect: 'follow'
+    };
+
+    return fetch(BASE_URL+"/auth/users/", requestOptions)
+}
+
+export {login_api, signup_api}

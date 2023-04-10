@@ -26,6 +26,7 @@
     "no_account": "Don't have an account? Sign Up",
     "signup": "Sign up",
     "emailaddr": "Email Address",
-    "have_acc": "Already have an account? Sign in"
+    "have_acc": "Already have an account? Sign in",
+    "succ_signup": "Signup successfull. You can now sign in."
   }
 }

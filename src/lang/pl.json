@@ -27,6 +27,7 @@
 
     "signup": "Zarejestruj się",
     "emailaddr": "Adres email",
-    "have_acc": "Masz już konto? Zaloguj się."
+    "have_acc": "Masz już konto? Zaloguj się.",
+    "succ_signup": "Rejestracja powiodła się. Możesz się zalogować."
   }
 }

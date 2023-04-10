@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react";
+import React, {useState, createContext} from "react";
 import Navbar from '../components/navbar'
 import Footer from '../components/footer'
 import LandingPage from '../components/landingPage'
@@ -25,9 +25,29 @@ import SignupPage from "../components/signupPage";
 
 setTranslations({gb, pl});
 
+export const AlertsContext = createContext({
+    alerts: [],
+    pushAlert: () => {
+    },
+    clearAlerts: () => {
+    }
+})
+
 
 function App() {
     const [cookies, setCookie] = useCookies(['lang', 'mode'])
+    const [alerts, setAlerts] = useState([])
+
+    const pushAlert = (severity, text) => {
+        setAlerts(current => [...current, {
+            severity: severity,
+            text: text
+        }])
+    }
+
+    const clearAlerts = () => {
+        setAlerts([])
+    }
 
     const set_color_mode = (mode) => {
         let exp_date = new Date()
@@ -59,22 +79,28 @@ function App() {
 
     return (
         <Box className="App">
-            <ThemeProvider theme={theme}>
-                <BrowserRouter>
-                    <Box sx={{
-                        minHeight: '100vh'
-                    }}>
-                        <Navbar set_app_language={set_app_language} language={cookie_lang}
-                                set_color_mode={set_color_mode}/>
-                        <Routes>
-                            <Route exact path="/" element={<LandingPage/>}/>
-                            <Route exact path="/login" element={<LoginPage/>}/>
-                            <Route exact path="/signup" element={<SignupPage/>}/>
-                        </Routes>
-                    </Box>
-                    <Footer></Footer>
-                </BrowserRouter>
-            </ThemeProvider>
+            <AlertsContext.Provider value={{
+                alerts: [...alerts],
+                pushAlert: pushAlert,
+                clearAlerts: clearAlerts
+            }}>
+                <ThemeProvider theme={theme}>
+                    <BrowserRouter>
+                        <Box sx={{
+                            minHeight: '100vh'
+                        }}>
+                            <Navbar set_app_language={set_app_language} language={cookie_lang}
+                                    set_color_mode={set_color_mode}/>
+                            <Routes>
+                                <Route exact path="/" element={<LandingPage/>}/>
+                                <Route exact path="/login" element={<LoginPage/>}/>
+                                <Route exact path="/signup" element={<SignupPage/>}/>
+                            </Routes>
+                        </Box>
+                        <Footer></Footer>
+                    </BrowserRouter>
+                </ThemeProvider>
+            </AlertsContext.Provider>
         </Box>
     );
 }
