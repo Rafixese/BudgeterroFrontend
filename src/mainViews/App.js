@@ -21,6 +21,7 @@ import {theme_light, theme_dark} from "../consts/theme"
 import LoginPage from "../components/loginPage";
 import {Box} from "@mui/material";
 import SignupPage from "../components/signupPage";
+import DashboardPage from "../components/dashboardPage";
 
 
 setTranslations({gb, pl});
@@ -95,6 +96,7 @@ function App() {
                                 <Route exact path="/" element={<LandingPage/>}/>
                                 <Route exact path="/login" element={<LoginPage/>}/>
                                 <Route exact path="/signup" element={<SignupPage/>}/>
+                                <Route exact path="/dashboard" element={<DashboardPage/>}/>
                             </Routes>
                         </Box>
                         <Footer></Footer>
